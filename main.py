@@ -28,6 +28,4 @@ button.when_pressed = lambda: (iso.cycle(), logger.info("ISO cycled"))
 
 logger.info("App ready")
 
-logger.info(f"Value: {adc.value}")
-
 pause()
