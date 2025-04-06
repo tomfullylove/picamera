@@ -1,6 +1,6 @@
 class ShutterSpeed:
     dial = None
-    max_dial_value = 26301
+    max_dial_value = None
 
     values = [500, 250, 125, 60, 30, 15]
 
