@@ -1,17 +1,21 @@
 class ShutterSpeed:
     dial = None
-    max_dial_value = None
+
+    min_value = None
+    max_value = None
 
     values = [500, 250, 125, 60, 30, 15]
 
-    def __init__(self, dial, max_dial_value):
+    def __init__(self, dial, min_value, max_value):
         self.dial = dial
-        self.max_dial_value = max_dial_value
+        self.min_value = min_value
+        self.max_value = max_value
 
     @property
     def value(self):
-        percentage = int((self.dial.value / self.max_dial_value) * 100)
-        max_index = len(self.values) - 1
+        normalized = (self.dial.value - self.min_value) / (self.max_value - self.min_value)
+        percentage = normalized * 100
 
-        index = int(((max_index) * (100 - percentage)) / 100)
+        max_index = len(self.values) - 1
+        index = round(((max_index) * (100 - percentage)) / 100)
         return self.values[index]

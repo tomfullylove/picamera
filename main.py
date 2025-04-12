@@ -10,7 +10,7 @@ logger.info("App initialising")
 iso = ISO(screen)
 iso_button.when_pressed = lambda: (iso.cycle(), logger.info("ISO cycled"))
 
-shutter_speed = ShutterSpeed(shutter_dial, 26301)
+shutter_speed = ShutterSpeed(shutter_dial, -850, 13900)
 # iso_button.when_pressed = lambda: logger.info(f"Shutter speed: {shutter_speed.value}")
 
 logger.info("App ready")
