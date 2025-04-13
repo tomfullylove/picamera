@@ -6,11 +6,11 @@ class Gain:
 
 	values = [
 		{"value": 1, "iso": 100},
-		{"value": 1, "iso": 200},
-		{"value": 1, "iso": 400},
-		{"value": 1, "iso": 800},
-		{"value": 1, "iso": 1600},
-		{"value": 1, "iso": 3200}
+		{"value": 2, "iso": 200},
+		{"value": 4, "iso": 400},
+		{"value": 8, "iso": 800},
+		{"value": 16, "iso": 1600},
+		{"value": 22, "iso": 3200}
 	]
 	index = 0
 
