@@ -4,7 +4,7 @@ class ShutterSpeed:
     min_value = None
     max_value = None
 
-    values = [500, 250, 125, 60, 30, 15]
+    values = [1000, 500, 250, 125, 60, 30, 15, 8, 4, 2, 1]
 
     def __init__(self, dial, min_value, max_value):
         self.dial = dial
