@@ -1,31 +1,30 @@
-import subprocess
-from signal import pause
-
+import atexit
 from utils.logger import logger
-
 from hardware import screen, gain_button, shutter_button
-from settings import Gain
-
-def capture(gain):
-    command = [
-        "rpicam-still",
-        "--nopreview",
-        "--output", "test.jpg",
-        "--analoggain", str(gain),
-        "--immediate",
-    ]
-    try:
-        subprocess.run(command, check=True)
-    except subprocess.CalledProcessError as error:
-        logger.error(f"Error capturing image: {error}")
+from settings import Gain, Camera
 
 logger.info("App initialising")
 
 gain = Gain(screen)
-gain_button.when_pressed = lambda: (gain.cycle(), logger.info(f"Gain cycled: {gain.value}"))
 
-shutter_button.when_pressed = lambda: (capture(gain.value), logger.info(f"Image captured"))
+camera = Camera(gain.value)
+camera.start()
+
+atexit.register(camera.stop)
+
+def on_gain_cycle():
+    gain.cycle()
+    logger.info(f"Gain cycled: {gain.value}")
+    camera.set_gain(gain.value)
+
+def on_shutter():
+    camera.trigger()
+    logger.info("RAW image captured")
+
+gain_button.when_pressed = on_gain_cycle
+shutter_button.when_pressed = on_shutter
 
 logger.info("App ready")
 
+from signal import pause
 pause()
