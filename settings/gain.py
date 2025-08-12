@@ -2,20 +2,17 @@ from PIL import Image
 from st7789 import ST7789 as Screen, BG_SPI_CS_FRONT
 
 class Gain:
-	screen = None
-
-	values = [
-		{"value": 1, "iso": 100},
-		{"value": 2, "iso": 200},
-		{"value": 4, "iso": 400},
-		{"value": 8, "iso": 800},
-		{"value": 16, "iso": 1600},
-		{"value": 22, "iso": 3200}
-	]
-	index = 0
-
 	def __init__(self, screen):
 		self.screen = screen
+		self.values = [
+			{"value": 1, "iso": 100},
+			{"value": 2, "iso": 200},
+			{"value": 4, "iso": 400},
+			{"value": 8, "iso": 800},
+			{"value": 16, "iso": 1600},
+			{"value": 22, "iso": 3200}
+		]
+		self.index = 0
 		self.set_image()
 
 	def set_image(self):
