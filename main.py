@@ -19,7 +19,7 @@ def on_gain_cycle():
 
 def on_shutter():
     camera.trigger()
-    logger.info("RAW image captured")
+    logger.info("Image captured")
 
 gain_button.when_pressed = on_gain_cycle
 shutter_button.when_pressed = on_shutter

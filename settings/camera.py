@@ -22,10 +22,7 @@ class Camera:
             return
         self.proc = subprocess.Popen(
             self._cmd(),
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
         )
-        logger.info(f"rpicam-still started (pid={self.proc.pid}, gain={self.gain})")
 
     def stop(self):
         if self.proc and self.proc.poll() is None:
