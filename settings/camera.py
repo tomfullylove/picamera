@@ -8,8 +8,11 @@ class Camera:
 
 
     def _cmd(self):
-        output_directory = Path(BASE_DIR) / "images"
-        output_directory.mkdir(parents=True, exist_ok=True)
+        output_directory = os.path.join(BASE_DIR, "images")
+        os.makedirs(output_directory, exist_ok=True)
+
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_pattern = os.path.join(output_directory, f"frame_{timestamp}_%06d.dng")
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
         output_pattern = str(output_directory / f"frame_{timestamp}_%06d.dng")
