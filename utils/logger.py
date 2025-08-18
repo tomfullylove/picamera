@@ -2,7 +2,11 @@ import logging
 
 from logging.handlers import RotatingFileHandler
 
-handler = RotatingFileHandler("app.log", maxBytes=1000000, backupCount=3)
+handler = RotatingFileHandler(
+    "/home/picamera/app.log",
+    maxBytes=1000000,
+    backupCount=3
+)
 
 logging.basicConfig(
     level=logging.INFO,
