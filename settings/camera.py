@@ -7,13 +7,14 @@ class Camera:
         self.proc = None
 
     def _cmd(self):
+        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         return [
             "rpicam-still",
             "--nopreview",
             "-t", "0",
             "--signal",
             "--raw",
-            "--output", "frame_%06d.dng",
+            "--output", "/home/picamera/images/{timestamp}_%06d.dng",
             "--analoggain", str(self.gain),
         ]
 
