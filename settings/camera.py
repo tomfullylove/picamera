@@ -6,15 +6,21 @@ class Camera:
         self.gain = gain_value
         self.proc = None
 
+
     def _cmd(self):
-        timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_directory = Path(BASE_DIR) / "images"
+        output_directory.mkdir(parents=True, exist_ok=True)
+
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_pattern = str(output_directory / f"frame_{timestamp}_%06d.dng")
+
         return [
             "rpicam-still",
             "--nopreview",
             "-t", "0",
             "--signal",
             "--raw",
-            "--output", "/home/picamera/images/{timestamp}_%06d.dng",
+            "--output", output_pattern,
             "--analoggain", str(self.gain),
         ]
 

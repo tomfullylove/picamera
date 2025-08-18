@@ -2,7 +2,8 @@ import os
 from PIL import Image
 from st7789 import ST7789 as Screen, BG_SPI_CS_FRONT
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ASSETS_DIR = os.path.join(BASE_DIR, "assets")
 
 class Gain:
 	def __init__(self, screen):
@@ -19,7 +20,7 @@ class Gain:
 		self.set_image()
 
 	def set_image(self):
-		image = Image.open(os.path.join(BASE_DIR, "assets", f"{self.iso}.jpg"))
+		image = Image.open(os.path.join(ASSETS_DIR, f"{self.iso}.jpg"))
 		self.screen.display(image)
 
 	def cycle(self):
