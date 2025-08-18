@@ -16,7 +16,7 @@ class Camera:
         output_pattern = os.path.join(output_directory, f"frame_{timestamp}_%06d.dng")
 
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output_pattern = str(output_directory / f"frame_{timestamp}_%06d.dng")
+        output_pattern = os.path.join(output_directory, f"frame_{timestamp}_%06d.dng")
 
         return [
             "rpicam-still",
